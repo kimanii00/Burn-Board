@@ -16,6 +16,8 @@ import com.samantha.burnboard.ui.screens.auth.RegisterScreen
 import com.samantha.burnboard.ui.screens.calories.CaloriesScreen
 import com.samantha.burnboard.ui.screens.contact.ContactScreen
 import com.samantha.burnboard.ui.screens.dashboard.DashboardScreen
+import com.samantha.burnboard.ui.screens.editprofile.EditProfileScreen
+
 import com.samantha.burnboard.ui.screens.profile.ProfileScreen
 import com.samantha.burnboard.ui.screens.settings.SettingsScreen
 import com.samantha.burnboard.ui.screens.splash.SplashScreen
@@ -64,10 +66,16 @@ fun AppNavHost(
         }
         composable(ROUT_PROFILE) {
             ProfileScreen(navController)
+
         }
         composable(ROUT_SETTINGS) {
             SettingsScreen(navController)
         }
+        composable(ROUTE_EDIT_PROFILE) {
+            EditProfileScreen(navController = navController)
+        }
+
+
 
 
 
@@ -109,3 +117,4 @@ fun AppNavHost(
 
     }
 }
+

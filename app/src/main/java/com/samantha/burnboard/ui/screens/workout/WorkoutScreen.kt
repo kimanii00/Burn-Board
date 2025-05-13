@@ -112,7 +112,7 @@ fun WorkoutScreen(navController: NavController) {
                 Text(
                     text = category,
                     style = MaterialTheme.typography.titleLarge,
-                    color = Color(0xFF00E676),
+                    color = Color(0xFF00C6FF),
                     fontWeight = FontWeight.Bold
                 )
                 Spacer(modifier = Modifier.height(8.dp))
@@ -200,7 +200,7 @@ fun AddWorkoutForm(viewModel: WorkoutViewModel) {
                     title = ""; instructions = ""; duration = ""; category = ""
                 }
             },
-            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF00C853)),
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF0D47A1)),
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(12.dp)
         ) {
@@ -220,10 +220,12 @@ fun StyledTextField(label: String, value: String, onValueChange: (String) -> Uni
             .fillMaxWidth()
             .padding(vertical = 6.dp),
         colors = OutlinedTextFieldDefaults.colors(
-            focusedBorderColor = Color(0xFF00E676),
-            unfocusedBorderColor = Color.Gray,
-            focusedLabelColor = Color(0xFF00E676),
-            unfocusedLabelColor = Color.Gray,
+            focusedBorderColor = Color(0xFF0D47A1),
+            unfocusedBorderColor = Color.White,
+            focusedLabelColor = Color(0xFF00BFA5),
+            unfocusedLabelColor = Color.White,
+            focusedTextColor = Color.White,
+            unfocusedTextColor = Color.White,
             cursorColor = Color.White
         ),
         shape = RoundedCornerShape(12.dp)

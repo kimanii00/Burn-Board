@@ -1,14 +1,14 @@
 package com.samantha.burnboard.ui.screens.dashboard
 
 import android.app.Application
-import androidx.compose.foundation.Image
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.material.icons.Icons
+
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -31,6 +31,7 @@ import com.samantha.burnboard.navigation.ROUT_PROFILE
 import com.samantha.burnboard.navigation.ROUT_SETTINGS
 import com.samantha.burnboard.navigation.ROUT_STEP
 import com.samantha.burnboard.navigation.ROUT_WORKOUT
+import com.samantha.burnboard.ui.screens.profile.AccentColor
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -129,19 +130,19 @@ fun DashboardScreen(navController: NavController, viewModel: ActivityViewModel =
             ActivityCard(
                 title = "Steps",
                 value = steps.toString(),
-                icon = R.drawable.img,
+                icon = R.drawable.steps,
                 onClick = { navController.navigate(ROUT_STEP) }
             )
             ActivityCard(
                 title = "Calories",
                 value = calories.toString(),
-                icon = R.drawable.img,
+                icon = R.drawable.calories,
                 onClick = { navController.navigate(ROUT_CALORIES) }
             )
             ActivityCard(
                 title = "Workout",
                 value = "${workoutMinutes} min",
-                icon = R.drawable.img,
+                icon = R.drawable.workout,
                 onClick = { navController.navigate(ROUT_WORKOUT) }
             )
         }
@@ -187,28 +188,28 @@ fun DashboardScreen(navController: NavController, viewModel: ActivityViewModel =
             item {
                 NavigationCard(
                     title = "Home",
-                    icon = R.drawable.img,
+                    icon = R.drawable.home1,
                     onClick = { navController.navigate(ROUT_HOME) }
                 )
             }
             item {
                 NavigationCard(
                     title = "About",
-                    icon = R.drawable.img,
+                    icon = R.drawable.about1,
                     onClick = { navController.navigate(ROUT_ABOUT) }
                 )
             }
             item {
                 NavigationCard(
                     title = "Settings",
-                    icon = R.drawable.img,
+                    icon = R.drawable.settings,
                     onClick = {navController.navigate(ROUT_SETTINGS) }
                 )
             }
             item {
                 NavigationCard(
                     title = "Profile",
-                    icon = R.drawable.img,
+                    icon = R.drawable.profile1,
                     onClick = {navController.navigate(ROUT_PROFILE) }
                 )
             }
@@ -220,28 +221,31 @@ fun DashboardScreen(navController: NavController, viewModel: ActivityViewModel =
 fun ActivityCard(title: String, value: String, icon: Int, onClick: () -> Unit) {
     Card(
         modifier = Modifier
-            .width(100.dp)
-            .height(100.dp)
+            .width(110.dp)
+            .height(120.dp)
             .clickable { onClick() },
         colors = CardDefaults.cardColors(containerColor = Color(0xFF1F1F1F))
     ) {
         Column(
-            modifier = Modifier.padding(8.dp),
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(12.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
             Icon(
                 painter = painterResource(id = icon),
                 contentDescription = title,
-                tint = Color(0xFF00C6FF),
-                modifier = Modifier.size(24.dp)
+                tint = AccentColor, // Use your theme's accent
+                modifier = Modifier.size(36.dp) // Increased for visibility
             )
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(10.dp))
             Text(text = value, color = Color.White, style = MaterialTheme.typography.bodyLarge)
             Text(text = title, color = Color.Gray, style = MaterialTheme.typography.bodySmall)
         }
     }
 }
+
 
 @Composable
 fun WorkoutCard(title: String, duration: String, calories: String) {
@@ -265,7 +269,7 @@ fun NavigationCard(title: String, icon: Int, onClick: () -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .height(100.dp)
+            .height(110.dp)
             .clickable { onClick() },
         colors = CardDefaults.cardColors(containerColor = Color(0xFF1F1F1F))
     ) {
@@ -279,14 +283,15 @@ fun NavigationCard(title: String, icon: Int, onClick: () -> Unit) {
             Icon(
                 painter = painterResource(id = icon),
                 contentDescription = title,
-                tint = Color(0xFF00C6FF),
-                modifier = Modifier.size(32.dp)
+                tint = AccentColor,
+                modifier = Modifier.size(40.dp) // Bigger icon
             )
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(10.dp))
             Text(text = title, color = Color.White, style = MaterialTheme.typography.bodyMedium)
         }
     }
 }
+
 
 @Preview
 @Composable

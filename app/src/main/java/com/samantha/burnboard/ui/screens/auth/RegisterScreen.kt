@@ -9,6 +9,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -28,6 +29,7 @@ import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
@@ -43,7 +45,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -67,7 +69,7 @@ fun RegisterScreen(
     var passwordVisible by remember { mutableStateOf(false) }
     var confirmPasswordVisible by remember { mutableStateOf(false) }
     var role by remember { mutableStateOf("user") }
-    val roleOptions = listOf("user", "admin")
+    val roleOptions = listOf("user")
     var expanded by remember { mutableStateOf(false) }
 
     val context = LocalContext.current
@@ -75,7 +77,7 @@ fun RegisterScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xC490AFAC))
+            .background(Color(0xFF121212))
             .padding(20.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -87,10 +89,12 @@ fun RegisterScreen(
         ) {
             Text(
                 text = "Create Your Account",
-                fontSize = 32.sp,
-                fontFamily = FontFamily.SansSerif,
-                color = Color.White
+                fontSize = 28.sp,
+                color = Color.White,
+                style = MaterialTheme.typography.headlineSmall,
+                fontWeight = FontWeight.Bold
             )
+
         }
 
         Spacer(modifier = Modifier.height(24.dp))
@@ -108,9 +112,15 @@ fun RegisterScreen(
                 .padding(vertical = 8.dp),
             shape = RoundedCornerShape(14.dp),
             colors = OutlinedTextFieldDefaults.colors(
+                focusedTextColor = Color.White,
+                unfocusedTextColor = Color.White,
                 focusedBorderColor = Color(0xFF00C6FF),
-                unfocusedBorderColor = Color.Gray
+                unfocusedBorderColor = Color.Gray,
+                cursorColor = Color.White,
+                focusedLabelColor = Color(0xFF00BFA5),
+                unfocusedLabelColor = Color.LightGray
             )
+
         )
 
         // Email
@@ -127,9 +137,15 @@ fun RegisterScreen(
                 .padding(vertical = 8.dp),
             shape = RoundedCornerShape(14.dp),
             colors = OutlinedTextFieldDefaults.colors(
+                focusedTextColor = Color.White,
+                unfocusedTextColor = Color.White,
                 focusedBorderColor = Color(0xFF00C6FF),
-                unfocusedBorderColor = Color.Gray
+                unfocusedBorderColor = Color.Gray,
+                cursorColor = Color.White,
+                focusedLabelColor = Color(0xFF00BFA5),
+                unfocusedLabelColor = Color.LightGray
             )
+
         )
 
         // Role Dropdown
@@ -143,15 +159,21 @@ fun RegisterScreen(
                 readOnly = true,
                 label = { Text("Select Role", color = Color.LightGray) },
                 trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
-                modifier = Modifier
+                modifier =  Modifier
                     .menuAnchor()
                     .fillMaxWidth()
                     .padding(vertical = 8.dp),
                 shape = RoundedCornerShape(14.dp),
                 colors = OutlinedTextFieldDefaults.colors(
+                    focusedTextColor = Color.White,
+                    unfocusedTextColor = Color.White,
                     focusedBorderColor = Color(0xFF00C6FF),
-                    unfocusedBorderColor = Color.Gray
+                    unfocusedBorderColor = Color.Gray,
+                    cursorColor = Color.White,
+                    focusedLabelColor = Color(0xFF00BFA5),
+                    unfocusedLabelColor = Color.LightGray
                 )
+
             )
 
             ExposedDropdownMenu(
@@ -180,7 +202,7 @@ fun RegisterScreen(
             },
             visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
             trailingIcon = {
-                val icon = if (passwordVisible) R.drawable.visibilityoff else R.drawable.visibilityoff
+                val icon = if (passwordVisible) R.drawable.visibility else R.drawable.visibilityoff
                 IconButton(onClick = { passwordVisible = !passwordVisible }) {
                     Icon(
                         painter = painterResource(id = icon),
@@ -195,9 +217,15 @@ fun RegisterScreen(
                 .padding(vertical = 8.dp),
             shape = RoundedCornerShape(14.dp),
             colors = OutlinedTextFieldDefaults.colors(
+                focusedTextColor = Color.White,
+                unfocusedTextColor = Color.White,
                 focusedBorderColor = Color(0xFF00C6FF),
-                unfocusedBorderColor = Color.Gray
+                unfocusedBorderColor = Color.Gray,
+                cursorColor = Color.White,
+                focusedLabelColor = Color(0xFF00BFA5),
+                unfocusedLabelColor = Color.LightGray
             )
+
         )
 
         // Confirm Password
@@ -210,7 +238,7 @@ fun RegisterScreen(
             },
             visualTransformation = if (confirmPasswordVisible) VisualTransformation.None else PasswordVisualTransformation(),
             trailingIcon = {
-                val icon = if (confirmPasswordVisible) R.drawable.visibilityoff else R.drawable.visibilityoff
+                val icon = if (confirmPasswordVisible) R.drawable.visibility else R.drawable.visibilityoff
                 IconButton(onClick = { confirmPasswordVisible = !confirmPasswordVisible }) {
                     Icon(
                         painter = painterResource(id = icon),
@@ -225,51 +253,63 @@ fun RegisterScreen(
                 .padding(vertical = 8.dp),
             shape = RoundedCornerShape(14.dp),
             colors = OutlinedTextFieldDefaults.colors(
+                focusedTextColor = Color.White,
+                unfocusedTextColor = Color.White,
                 focusedBorderColor = Color(0xFF00C6FF),
-                unfocusedBorderColor = Color.Gray
+                unfocusedBorderColor = Color.Gray,
+                cursorColor = Color.White,
+                focusedLabelColor = Color(0xFF00BFA5),
+                unfocusedLabelColor = Color.LightGray
             )
+
         )
 
         Spacer(modifier = Modifier.height(24.dp))
 
         // Register Button
-        Box(
+        Button(
+            onClick = {
+                if (username.isBlank() || email.isBlank() || password.isBlank() || confirmPassword.isBlank()) {
+                    Toast.makeText(context, "All fields are required", Toast.LENGTH_SHORT).show()
+                } else if (password != confirmPassword) {
+                    Toast.makeText(context, "Passwords do not match", Toast.LENGTH_SHORT).show()
+                } else {
+                    authViewModel.registerUser(
+                        com.samantha.burnboard.model.User(
+                            username = username,
+                            email = email,
+                            role = role,
+                            password = password
+                        )
+                    )
+                    onRegisterSuccess()
+                }
+            },
             modifier = Modifier
                 .fillMaxWidth()
-                .height(50.dp)
-                .background(
-                    brush = Brush.horizontalGradient(
-                        colors = listOf(Color(0xFF00C6FF), Color(0xFF0072FF))
-                    ),
-                    shape = RoundedCornerShape(14.dp)
-                ),
-            contentAlignment = Alignment.Center
+                .height(52.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color.Transparent
+            ),
+            shape = RoundedCornerShape(12.dp),
+            contentPadding = PaddingValues()
         ) {
-            Button(
-                onClick = {
-                    if (username.isBlank() || email.isBlank() || password.isBlank() || confirmPassword.isBlank()) {
-                        Toast.makeText(context, "All fields are required", Toast.LENGTH_SHORT).show()
-                    } else if (password != confirmPassword) {
-                        Toast.makeText(context, "Passwords do not match", Toast.LENGTH_SHORT).show()
-                    } else {
-                        authViewModel.registerUser(
-                            com.samantha.burnboard.model.User(
-                                username = username,
-                                email = email,
-                                role = role,
-                                password = password
-                            )
-                        )
-                        onRegisterSuccess()
-                    }
-                },
-                modifier = Modifier.fillMaxSize(),
-                colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
-                shape = RoundedCornerShape(14.dp)
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(
+                        brush = Brush.horizontalGradient(
+                            colors = listOf(Color(0xFF00C6FF), Color(0xFF0072FF))
+                        ),
+                        shape = RoundedCornerShape(12.dp)
+                    ),
+                contentAlignment = Alignment.Center
             ) {
-                Text("Register", color = Color.White, fontSize = 18.sp)
+                Text("Register", color = Color.White, fontSize = 18.sp, fontWeight = androidx.compose.ui.text.font.FontWeight.Bold)
             }
         }
+
+
 
         Spacer(modifier = Modifier.height(16.dp))
 

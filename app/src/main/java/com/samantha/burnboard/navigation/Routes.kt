@@ -7,6 +7,8 @@ const val ROUT_CONTACT = "contact"
 const val ROUT_SPLASH = "splash"
 const val ROUT_DASHBOARD = "dashboard"
 const val ROUT_SETTINGS = "setttings"
+const val ROUTE_EDIT_PROFILE = "edit_profile"
+
 
 //Authentification
 const val ROUT_REGISTER = "Register"

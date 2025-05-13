@@ -1,5 +1,6 @@
 package com.samantha.burnboard.ui.screens.contact
 
+
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -144,3 +145,6 @@ fun ContactScreen(navController: NavController){
 fun ContactScreenPreview(){
     ContactScreen(navController= rememberNavController())
 }
+
+
+
